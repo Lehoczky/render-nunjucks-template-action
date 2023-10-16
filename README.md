@@ -1,5 +1,9 @@
 # Render nunjucks template
 
+![CI status](https://github.com/lehoczky/render-nunjucks-template-action/workflows/CI/badge.svg)
+![check dist status](https://github.com/lehoczky/render-nunjucks-template-action/workflows/Check%20dist%2F/badge.svg)
+![formatted with prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+
 A GitHub action to render [nunjucks](https://mozilla.github.io/nunjucks/) templates.
 
 ## Usage
