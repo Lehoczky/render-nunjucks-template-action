@@ -14,6 +14,7 @@ const config = {
   },
   coverageReporters: ["json-summary", "text", "lcov"],
   collectCoverageFrom: ["./src/**"],
+  setupFiles: ["<rootDir>/jest.setup.js"],
 }
 
 export default config
