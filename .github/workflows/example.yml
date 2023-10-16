@@ -1,0 +1,65 @@
+name: Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository ⏬
+        uses: actions/checkout@v4
+
+      - name: Render template string 🎬
+        id: render-template-string
+        uses: ./
+        with:
+          template: |
+            <h1>Test</h1>
+
+            <h2>Posts</h2>
+            <ul>
+            {% for post in posts %}
+              <li>{{ post.title }}</li>
+            {% else %}
+              <li>This would display if the 'posts' collection were empty</li>
+            {% endfor %}
+            </ul>
+
+            <h2>GitHub context</h2>
+            <div>
+              {{ context | dump(2) }}
+            </div>
+
+            <h2>Env</h2>
+            <div>
+              {{ env | dump(2) }}
+            </div>
+          vars: |
+            {
+              "posts": [
+                { "title": "foo", "id": 1},
+                { "title": "bar", "id": 2}
+              ]
+            }
+          trim-blocks: true
+
+      - name: Print output 📽
+        run: echo "${{ steps.render-template-string.outputs.result }}"
+
+      - name: Render template file 🎬
+        id: render-template-file
+        uses: ./
+        with:
+          template-path: .github/templates/example.njk
+          vars: |
+            {
+              "posts": [
+                { "title": "foo", "id": 1},
+                { "title": "bar", "id": 2}
+              ]
+            }
+          trim-blocks: true
+
+      - name: Print output 📽
+        run: echo "${{ steps.render-template-file.outputs.result }}"

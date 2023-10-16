@@ -1,0 +1,20 @@
+<h1>Test</h1>
+
+<h2>Posts</h2>
+<ul>
+{% for post in posts %}
+  <li>{{ post.title }}</li>
+{% else %}
+  <li>This would display if the 'posts' collection were empty</li>
+{% endfor %}
+</ul>
+
+<h2>GitHub context</h2>
+<div>
+  {{ context | dump(2) }}
+</div>
+
+<h2>Env</h2>
+<div>
+  {{ env | dump(2) }}
+</div>

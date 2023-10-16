@@ -1,19 +1,39 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: Render Nunjucks Template
+description: A GitHub action to render nunjucks templates
+author: Zoltan Lehoczky
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
+  template:
+    description: Nunjucks template string
+    required: false
+  template-path:
+    description: Path to nunjucks template file
+    required: false
+  vars:
+    description: Variables to use in template
+    required: false
+    default: "{}"
+  auto-escape:
+    description: Controls if output with dangerous characters are escaped automatically
+    required: false
+    default: "true"
+  trim-blocks:
+    description: Automatically remove trailing newlines from a block/tag
+    required: false
+    default: "false"
+  lstrip-blocks:
+    description: Automatically remove leading whitespace from a block/tag
+    required: false
+    default: "false"
 
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  result:
+    description: Rendered file content
 
 runs:
   using: node20
   main: dist/index.js
+
+branding:
+  icon: file-text
+  color: green

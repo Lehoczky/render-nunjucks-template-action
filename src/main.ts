@@ -1,26 +1,81 @@
-import * as core from '@actions/core'
-import { wait } from './wait'
+import * as core from "@actions/core"
+import { context } from "@actions/github"
+import * as nunjucks from "nunjucks"
+import { join } from "path"
 
-/**
- * The main function for the action.
- * @returns {Promise<void>} Resolves when the action is complete.
- */
-export async function run(): Promise<void> {
+export function run(): void {
   try {
-    const ms: string = core.getInput('milliseconds')
+    const { template, templatePath } = getTemplateAndTemplatePath()
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    const renderContext = getRenderContext()
+    core.debug(`💬 Render context: ${JSON.stringify(renderContext)}`)
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const nunjucksConfiguration = getNunjucksConfiguration()
+    const nunjucksEnv = nunjucks.configure(nunjucksConfiguration)
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    let result: string
+
+    if (templatePath) {
+      const fullPath = join(process.env.GITHUB_WORKSPACE || "", templatePath)
+      core.debug(`💬 Loading template file from: ${fullPath}`)
+      result = nunjucksEnv.render(fullPath, renderContext)
+    } else {
+      result = nunjucksEnv.renderString(template, renderContext)
+    }
+
+    core.debug(`💬 Result: ${result}`)
+    core.setOutput("result", result)
   } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) core.setFailed(error.message)
+    if (error instanceof Error) {
+      core.setFailed(`❌ ${error.message}`)
+    }
   }
+}
+
+function getTemplateAndTemplatePath() {
+  const template = core.getInput("template")
+  const templatePath = core.getInput("template-path")
+
+  if (!template && !templatePath) {
+    throw new Error(
+      "No template specified, please provide `template` or `template-path`",
+    )
+  }
+
+  return { template, templatePath }
+}
+
+function getRenderContext() {
+  const variables = getTemplateVariables()
+  const env = process.env
+  return { context, env, ...variables }
+}
+
+function getNunjucksConfiguration() {
+  const autoescape = getBooleanInput("auto-escape")
+  core.debug(`💬 auto-escape: ${autoescape}`)
+
+  const trimBlocks = getBooleanInput("trim-blocks")
+  core.debug(`💬 trim-blocks: ${trimBlocks}`)
+
+  const lstripBlocks = getBooleanInput("lstrip-blocks")
+  core.debug(`💬 lstrip-blocks: ${lstripBlocks}`)
+
+  return { autoescape, trimBlocks, lstripBlocks }
+}
+
+function getTemplateVariables() {
+  const vars = core.getInput("vars")
+  try {
+    return JSON.parse(vars)
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      throw new Error(`Could not parse the input variables as JSON: ${vars}`)
+    }
+    throw error
+  }
+}
+
+function getBooleanInput(name: string) {
+  return core.getInput(name).toLowerCase() === "true"
 }
