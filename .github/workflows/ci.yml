@@ -19,17 +19,20 @@ jobs:
       - name: Check out Git repository ⏬
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js 💿
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: pnpm
 
-      - name: Install Dependencies
-        run: pnpm i
+      - name: Install Dependencies 📦
+        run: pnpm install
 
-      - name: Lint
+      - name: Lint 🧹
         run: pnpm lint
 
-      - name: Test
+      - name: Test 🧪
         run: npm test:coverage
