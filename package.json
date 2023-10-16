@@ -1,7 +1,7 @@
 {
   "name": "render-nunjucks-template-action",
   "description": "A GitHub action to render nunjucks templates",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
