@@ -25,7 +25,7 @@ jobs:
 
       - name: Render template string 🎬
         id: render-template-string
-        uses: Lehoczky/render-nunjucks-template-action@v1
+        uses: Lehoczky/render-nunjucks-template-action@v1.0.0
         with:
           template: "Hello {{ username | capitalize }}"
           vars: |
@@ -54,7 +54,7 @@ jobs:
 
       - name: Render template string 🎬
         id: render-template-string
-        uses: Lehoczky/render-nunjucks-template-action@v1
+        uses: Lehoczky/render-nunjucks-template-action@v1.0.0
         with:
           template-path: .github/templates/example.njk
           vars: |
@@ -73,7 +73,7 @@ The [GitHub action context](https://docs.github.com/en/actions/learn-github-acti
 ```yml
 - name: Render template string 🎬
   id: render-template-string
-  uses: Lehoczky/render-nunjucks-template-action@v1
+  uses: Lehoczky/render-nunjucks-template-action@v1.0.0
   with:
     template: |
       GitHub context:
