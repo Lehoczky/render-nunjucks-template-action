@@ -10,7 +10,7 @@ inputs:
     description: Path to nunjucks template file
     required: false
   vars:
-    description: Variables to use in template
+    description: Variables to use in template in JSON format
     required: false
     default: "{}"
   auto-escape:

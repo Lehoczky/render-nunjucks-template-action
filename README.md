@@ -89,7 +89,7 @@ The [GitHub action context](https://docs.github.com/en/actions/learn-github-acti
 | ------------- | ---------------------------------------------------------------------- | ------- |
 | template      | Nunjucks template string                                               | ""      |
 | template-path | Path to nunjucks template file                                         | ""      |
-| vars          | Variables to use in template                                           | {}      |
+| vars          | Variables to use in template in JSON format                            | {}      |
 | auto-escape   | Controls if output with dangerous characters are escaped automatically | true    |
 | trim-blocks   | Automatically remove trailing newlines from a block/tag                | false   |
 | lstrip-blocks | Automatically remove leading whitespace from a block/tag               | false   |
