@@ -68,7 +68,7 @@ jobs:
 
 ### Using injected context
 
-The [GitHub action context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) and [env variables](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) are automatically injected into the templates for convenience:
+The [GitHub action context](https://github.com/actions/toolkit/blob/main/packages/github/src/context.ts) and [env variables](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow) are automatically injected into the templates for convenience:
 
 ```yml
 - name: Render template string 🎬
