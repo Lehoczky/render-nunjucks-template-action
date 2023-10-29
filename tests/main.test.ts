@@ -1,4 +1,5 @@
 import * as core from "@actions/core"
+import dedent from "dedent"
 import { resolve } from "path"
 
 import * as main from "../src/main"
@@ -109,7 +110,12 @@ describe("action", () => {
         case "template-path":
           return resolve(__dirname, "./mocks/blocks.njk")
         case "vars":
-          return `{"items": [{ "title": "foo", "id": 1 }, { "title": "bar", "id": 2}]}`
+          return JSON.stringify({
+            items: [
+              { title: "foo", id: 1 },
+              { title: "bar", id: 2 },
+            ],
+          })
         case "trim-blocks":
           return "true"
         default:
@@ -119,15 +125,14 @@ describe("action", () => {
 
     main.run()
 
-    const expectedResult = `
-<h1>Posts</h1>
-<ul>
-  <li>foo</li>
-  <li>bar</li>
-</ul>
-`.trimStart()
+    const expectedResult = dedent`
+      <h1>Posts</h1>
+      <ul>
+        <li>foo</li>
+        <li>bar</li>
+      </ul>`
 
-    expect(setOutputMock).toHaveBeenCalledWith("result", expectedResult)
+    expect(setOutputMock).toHaveBeenCalledWith("result", `${expectedResult}\n`)
   })
 
   it("doesn't remove trailing newlines from a block/tag when that option is turned off", () => {
@@ -136,7 +141,12 @@ describe("action", () => {
         case "template-path":
           return resolve(__dirname, "./mocks/blocks.njk")
         case "vars":
-          return `{"items": [{ "title": "foo", "id": 1 }, { "title": "bar", "id": 2}]}`
+          return JSON.stringify({
+            items: [
+              { title: "foo", id: 1 },
+              { title: "bar", id: 2 },
+            ],
+          })
         case "trim-blocks":
           return "false"
         default:
@@ -146,18 +156,17 @@ describe("action", () => {
 
     main.run()
 
-    const expectedResult = `
-<h1>Posts</h1>
-<ul>
+    const expectedResult = dedent`
+      <h1>Posts</h1>
+      <ul>
 
-  <li>foo</li>
+        <li>foo</li>
 
-  <li>bar</li>
+        <li>bar</li>
 
-</ul>
-`.trimStart()
+      </ul>`
 
-    expect(setOutputMock).toHaveBeenCalledWith("result", expectedResult)
+    expect(setOutputMock).toHaveBeenCalledWith("result", `${expectedResult}\n`)
   })
 
   it("throws an error when no template or template path has been give", () => {

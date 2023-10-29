@@ -33,6 +33,7 @@
     "@types/nunjucks": "^3.2.4",
     "@vercel/ncc": "^0.38.0",
     "bumpp": "^9.2.0",
+    "dedent": "^1.5.1",
     "eslint": "^8.51.0",
     "eslint-define-config": "^1.24.1",
     "eslint-plugin-jest": "^27.4.2",
