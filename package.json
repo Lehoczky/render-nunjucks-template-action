@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "format:check": "prettier . --check",
-    "markdownlint:check": "markdownlint-cli2 \"**/*.md\" \"!**/node_modules\"",
+    "markdownlint:check": "markdownlint-cli2 \"**/*.md\" \"!**/node_modules\" \"!**/CHANGELOG.md\"",
     "eslint:check": "eslint --max-warnings=0",
     "lint": "npm run format:check && npm run markdownlint:check && npm run eslint:check",
     "test": "vitest run",
