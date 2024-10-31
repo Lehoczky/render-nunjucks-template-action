@@ -1,9 +1,10 @@
 {
   "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
-  "version": "independent",
+  "version": "1.0.0",
   "npmClient": "pnpm",
-  "conventionalCommits": false,
+  "conventionalCommits": true,
   "message": "chore: release",
   "packages": ["."],
-  "ignoreChanges": ["**/*.md"]
+  "ignoreChanges": ["**/*.md"],
+  "createRelease": "github"
 }
