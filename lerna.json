@@ -2,13 +2,18 @@
   "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
   "version": "1.1.0",
   "npmClient": "pnpm",
-  "conventionalCommits": true,
-  "message": "chore: release",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "message": "chore(release): publish %s",
+      "createRelease": "github"
+    }
+  },
   "packages": [
     "."
   ],
   "ignoreChanges": [
     "**/*.md"
-  ],
-  "createRelease": "github"
+  ]
 }
