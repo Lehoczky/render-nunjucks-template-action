@@ -1,11 +1,13 @@
+import { describe, expect, it, vi } from "vitest"
+
 import * as main from "../src/main"
 
 // Mock the action's entrypoint
-const runMock = jest.spyOn(main, "run").mockImplementation()
+const runMock = vi.spyOn(main, "run").mockImplementation(() => {})
 
 describe("index", () => {
   it("calls run when imported", async () => {
-    await require("../src/index")
+    await import("../src/index.js")
 
     expect(runMock).toHaveBeenCalled()
   })

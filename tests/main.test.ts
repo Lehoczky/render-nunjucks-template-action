@@ -1,18 +1,20 @@
+import { resolve } from "node:path"
+
 import * as core from "@actions/core"
 import dedent from "dedent"
-import { resolve } from "path"
+import { beforeEach, describe, expect, it, vi } from "vitest"
 
 import * as main from "../src/main"
 
 // Mock the GitHub Actions core library
-jest.spyOn(core, "debug").mockImplementation(() => {})
-const getInputMock = jest.spyOn(core, "getInput")
-const setFailedMock = jest.spyOn(core, "setFailed").mockImplementation(() => {})
-const setOutputMock = jest.spyOn(core, "setOutput").mockImplementation(() => {})
+vi.spyOn(core, "debug").mockImplementation(() => {})
+const getInputMock = vi.spyOn(core, "getInput")
+const setFailedMock = vi.spyOn(core, "setFailed").mockImplementation(() => {})
+const setOutputMock = vi.spyOn(core, "setOutput").mockImplementation(() => {})
 
 describe("action", () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it("renders a template string", () => {

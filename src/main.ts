@@ -1,7 +1,8 @@
+import { join } from "node:path"
+
 import * as core from "@actions/core"
 import { context } from "@actions/github"
 import * as nunjucks from "nunjucks"
-import { join } from "path"
 
 export function run(): void {
   try {
