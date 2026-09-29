@@ -30,14 +30,14 @@
     "@types/node": "^24.19.0",
     "@types/nunjucks": "^3.2.6",
     "@vercel/ncc": "^0.45.0",
-    "@vitest/coverage-v8": "2.1.9",
+    "@vitest/coverage-v8": "4.1.11",
     "dedent": "^1.7.2",
     "eslint": "^10.11.0",
     "markdownlint-cli2": "^0.23.3",
     "prettier": "^3.9.9",
-    "vitest": "^2.1.9"
+    "vitest": "^4.1.11"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@11.28.2",
   "author": {
     "name": "Zoltan Lehoczky",
     "email": "ifjlehoczkyzoltan@gmail.com",
