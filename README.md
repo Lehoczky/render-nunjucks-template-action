@@ -21,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository ⏬
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Render template string 🎬
         id: render-template-string
-        uses: Lehoczky/render-nunjucks-template-action@v1.0.0
+        uses: Lehoczky/render-nunjucks-template-action@v1.1.0
         with:
           template: "Hello {{ username | capitalize }}"
           vars: |
@@ -50,11 +50,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository ⏬
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Render template string 🎬
         id: render-template-string
-        uses: Lehoczky/render-nunjucks-template-action@v1.0.0
+        uses: Lehoczky/render-nunjucks-template-action@v1.1.0
         with:
           template-path: .github/templates/example.njk
           vars: |
@@ -73,7 +73,7 @@ The [GitHub action context](https://github.com/actions/toolkit/blob/main/package
 ```yml
 - name: Render template string 🎬
   id: render-template-string
-  uses: Lehoczky/render-nunjucks-template-action@v1.0.0
+  uses: Lehoczky/render-nunjucks-template-action@v1.1.0
   with:
     template: |
       GitHub context:
