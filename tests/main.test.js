@@ -18,7 +18,7 @@ describe("action", () => {
   })
 
   it("renders a template string", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template":
           return "Hello {{ username | capitalize }}"
@@ -34,7 +34,7 @@ describe("action", () => {
   })
 
   it("renders a template file", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template-path":
           return resolve(__dirname, "./mocks/simple.njk")
@@ -50,7 +50,7 @@ describe("action", () => {
   })
 
   it("renders the template file even when both `template` and `template-path` are defined", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template":
           return "I won't be rendered"
@@ -68,7 +68,7 @@ describe("action", () => {
   })
 
   it("escapes the output characters when that option is turned on", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template":
           return `{{ {"key": "value"} | dump }}`
@@ -89,7 +89,7 @@ describe("action", () => {
   })
 
   it("doesn't escape the output when that option is turned off", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template":
           return `{{ {"key": "value"} | dump }}`
@@ -107,7 +107,7 @@ describe("action", () => {
   })
 
   it("removes trailing newlines from a block/tag when that option is turned on", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template-path":
           return resolve(__dirname, "./mocks/blocks.njk")
@@ -138,7 +138,7 @@ describe("action", () => {
   })
 
   it("doesn't remove trailing newlines from a block/tag when that option is turned off", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template-path":
           return resolve(__dirname, "./mocks/blocks.njk")
@@ -172,7 +172,7 @@ describe("action", () => {
   })
 
   it("throws an error when no template or template path has been give", () => {
-    getInputMock.mockImplementation((_name: string): string => {
+    getInputMock.mockImplementation((_name) => {
       return ""
     })
 
@@ -183,7 +183,7 @@ describe("action", () => {
   })
 
   it("throws an error when the template file does not exist", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template-path":
           return "not-exist.njk"
@@ -201,7 +201,7 @@ describe("action", () => {
   })
 
   it("throws an error when the variables cannot be parsed as JSON", () => {
-    getInputMock.mockImplementation((name: string): string => {
+    getInputMock.mockImplementation((name) => {
       switch (name) {
         case "template":
           return "Hello"

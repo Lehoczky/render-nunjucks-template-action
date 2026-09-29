@@ -11,7 +11,7 @@
     "lint": "npm run format:check && npm run markdownlint:check && npm run eslint:check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "build": "ncc build src/index.ts --license licenses.txt --minify"
+    "build": "ncc build src/index.js --license licenses.txt --minify"
   },
   "exports": {
     ".": "./dist/index.js"
@@ -36,7 +36,6 @@
     "eslint": "^9.16.0",
     "markdownlint-cli2": "^0.15.0",
     "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
   "packageManager": "pnpm@9.15.0",
