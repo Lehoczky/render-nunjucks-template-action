@@ -19,8 +19,8 @@ importers:
         version: 3.2.4
     devDependencies:
       '@lehoczky/eslint-config-base':
-        specifier: ^3.1.0
-        version: 3.1.0(eslint@10.11.0(supports-color@7.2.0))(supports-color@7.2.0)
+        specifier: ^3.1.1
+        version: 3.1.1(eslint@10.11.0(supports-color@7.2.0))(supports-color@7.2.0)
       '@lehoczky/prettier-config':
         specifier: ^2.0.2
         version: 2.0.2
@@ -275,8 +275,8 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@lehoczky/eslint-config-base@3.1.0':
-    resolution: {integrity: sha512-1QIlf49HxtCZFt4/dV2fqj+PCqzWOAzbtiSy4qx7+N9ppkk7afQLDkdNkEyLHr+jChog4jwGH1YwzySHqGbIyg==}
+  '@lehoczky/eslint-config-base@3.1.1':
+    resolution: {integrity: sha512-TYIsW4Z1lg0Aqb5cFJyVmVNzVSZ9jkKIqsgfXeFxQ0QfE/hSKXiM/D8AcBvGz7YgUw/MtCTEfPPKXRADxOrzoA==}
     peerDependencies:
       eslint: '>=10.0.0'
 
@@ -1909,7 +1909,7 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@lehoczky/eslint-config-base@3.1.0(eslint@10.11.0(supports-color@7.2.0))(supports-color@7.2.0)':
+  '@lehoczky/eslint-config-base@3.1.1(eslint@10.11.0(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.11.0(supports-color@7.2.0))
       eslint: 10.11.0(supports-color@7.2.0)

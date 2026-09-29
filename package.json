@@ -7,7 +7,7 @@
   "scripts": {
     "format:check": "prettier . --check",
     "eslint:check": "eslint --max-warnings=0",
-    "lint": "npm run format:check npm run eslint:check",
+    "lint": "pnpm format:check && pnpm eslint:check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "build": "rolldown -c"
@@ -18,7 +18,7 @@
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
-    "@lehoczky/eslint-config-base": "^3.1.0",
+    "@lehoczky/eslint-config-base": "^3.1.1",
     "@lehoczky/prettier-config": "^2.0.2",
     "@lerna-lite/cli": "^5.6.2",
     "@lerna-lite/version": "^5.6.2",

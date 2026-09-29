@@ -72,7 +72,9 @@ function getTemplateVariables() {
     return JSON.parse(vars)
   } catch (error) {
     if (error instanceof SyntaxError) {
-      throw new Error(`Could not parse the input variables as JSON: ${vars}`)
+      throw new Error(`Could not parse the input variables as JSON: ${vars}`, {
+        cause: error,
+      })
     }
     throw error
   }
