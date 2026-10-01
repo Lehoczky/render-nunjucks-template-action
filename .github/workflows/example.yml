@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository ⏬
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Render template string 🎬
         id: render-template-string

@@ -4,7 +4,7 @@ import * as core from "@actions/core"
 import { context } from "@actions/github"
 import * as nunjucks from "nunjucks"
 
-export function run(): void {
+export function run() {
   try {
     const { template, templatePath } = getTemplateAndTemplatePath()
 
@@ -14,7 +14,8 @@ export function run(): void {
     const nunjucksConfiguration = getNunjucksConfiguration()
     const nunjucksEnv = nunjucks.configure(nunjucksConfiguration)
 
-    let result: string
+    /** @type {string} */
+    let result
 
     if (templatePath) {
       const fullPath = join(process.env.GITHUB_WORKSPACE || "", templatePath)
@@ -71,12 +72,18 @@ function getTemplateVariables() {
     return JSON.parse(vars)
   } catch (error) {
     if (error instanceof SyntaxError) {
-      throw new Error(`Could not parse the input variables as JSON: ${vars}`)
+      throw new Error(`Could not parse the input variables as JSON: ${vars}`, {
+        cause: error,
+      })
     }
     throw error
   }
 }
 
-function getBooleanInput(name: string) {
+/**
+ *
+ * @param {string} name
+ */
+function getBooleanInput(name) {
   return core.getInput(name).toLowerCase() === "true"
 }

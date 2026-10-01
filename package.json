@@ -6,43 +6,32 @@
   "license": "MIT",
   "scripts": {
     "format:check": "prettier . --check",
-    "markdownlint:check": "markdownlint-cli2 \"**/*.md\" \"!**/node_modules\" \"!**/CHANGELOG.md\"",
     "eslint:check": "eslint --max-warnings=0",
-    "lint": "npm run format:check && npm run markdownlint:check && npm run eslint:check",
+    "lint": "pnpm format:check && pnpm eslint:check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "build": "ncc build src/index.ts --license licenses.txt --minify"
-  },
-  "exports": {
-    ".": "./dist/index.js"
-  },
-  "engines": {
-    "node": ">=20"
+    "build": "rolldown -c"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/github": "^6.0.0",
+    "@actions/core": "^2.0.3",
+    "@actions/github": "^8.0.1",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
-    "@lehoczky/eslint-config-typescript": "^2.0.4",
-    "@lehoczky/eslint-config-vitest": "^1.0.5",
-    "@lehoczky/markdownlint-config": "^2.0.1",
-    "@lehoczky/prettier-config": "^2.0.1",
-    "@lerna-lite/cli": "^3.10.1",
-    "@lerna-lite/version": "^3.10.1",
-    "@types/node": "^20.17.9",
+    "@lehoczky/eslint-config-base": "^3.1.1",
+    "@lehoczky/prettier-config": "^2.0.2",
+    "@lerna-lite/cli": "^5.6.2",
+    "@lerna-lite/version": "^5.6.2",
+    "@types/node": "^24.19.0",
     "@types/nunjucks": "^3.2.6",
-    "@vercel/ncc": "^0.38.3",
-    "@vitest/coverage-v8": "2.1.8",
-    "dedent": "^1.5.3",
-    "eslint": "^9.16.0",
-    "markdownlint-cli2": "^0.15.0",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "@vitest/coverage-v8": "5.0.2",
+    "dedent": "^1.7.2",
+    "eslint": "^10.11.0",
+    "prettier": "^3.9.9",
+    "rolldown": "^1.2.11",
+    "vitest": "^5.0.2"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@11.28.2",
   "author": {
     "name": "Zoltan Lehoczky",
     "email": "ifjlehoczkyzoltan@gmail.com",
